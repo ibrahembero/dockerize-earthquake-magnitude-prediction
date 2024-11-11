@@ -5,5 +5,6 @@ of an earthquake and the other project for front end using react to consume this
 and this is the objective for this full project to gather front with back end to deploy a trained model on specific data after proces it and then put the model 
 in backend project to set an api then consuming it using front end  <h2>
 <h2>The url for docker images is:
-  https://hub.docker.com/repository/docker/berobee/earthquake_prediction_images/tags <h2>
+  https://hub.docker.com/repository/docker/berobee/earthquake_prediction_images/tags
+  We pull it using this command: docker pull berobee/earthquake_prediction_images:latest<h2>
 🦋 🌹 ⭐
