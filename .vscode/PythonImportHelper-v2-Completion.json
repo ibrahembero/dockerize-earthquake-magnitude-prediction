@@ -61,64 +61,64 @@
     {
         "label": "Item",
         "kind": 6,
-        "importPath": "main",
-        "description": "main",
+        "importPath": "app.main",
+        "description": "app.main",
         "peekOfCode": "class Item(BaseModel):\n    latitude : str # here if we remove the value is will be required field\n    longitude : str \n    Timestamp : str\n    depth : str\n#to run the app we should use uvicorn which is server and we wrote this\n#  uvicorn main:app --reload \n@app.get('/')\ndef root():\n    return {\"message\":\"Earthquake Magnitude Prediction\"}",
-        "detail": "main",
+        "detail": "app.main",
         "documentation": {}
     },
     {
         "label": "convert_time_to_timestamp",
         "kind": 2,
-        "importPath": "main",
-        "description": "main",
+        "importPath": "app.main",
+        "description": "app.main",
         "peekOfCode": "def convert_time_to_timestamp(real_time):\n        # Adjust format string to match 'YYYY-MM-DDTHH:MM:SS.sssZ' format\n        ts = datetime.datetime.strptime(real_time, '%Y-%m-%dT%H:%M:%S.%fZ')\n        # Use calendar.timegm to get the Unix timestamp\n        timestamp = calendar.timegm(ts.utctimetuple())\n        return float(timestamp)\nclass Item(BaseModel):\n    latitude : str # here if we remove the value is will be required field\n    longitude : str \n    Timestamp : str",
-        "detail": "main",
+        "detail": "app.main",
         "documentation": {}
     },
     {
         "label": "root",
         "kind": 2,
-        "importPath": "main",
-        "description": "main",
+        "importPath": "app.main",
+        "description": "app.main",
         "peekOfCode": "def root():\n    return {\"message\":\"Earthquake Magnitude Prediction\"}\n# add new item to the list and we test it using this command in bash terminal\n# curl -X POST -H \"Content-Type: application/json\" 'http://127.0.0.1:8000/items?item=orange'\n# when we add Item class for more complex data structure in to do app we should pass the data as json like this\n# curl -X POST -H \"Content-Type: application/json\" -d '{\"text\":\"hello\"}' 'http://127.0.0.1:8000/items'\n@app.post('/predict')\ndef make_predict(data: Item):\n    data = data.dict()\n    latitude=float(data['latitude'])",
-        "detail": "main",
+        "detail": "app.main",
         "documentation": {}
     },
     {
         "label": "make_predict",
         "kind": 2,
-        "importPath": "main",
-        "description": "main",
+        "importPath": "app.main",
+        "description": "app.main",
         "peekOfCode": "def make_predict(data: Item):\n    data = data.dict()\n    latitude=float(data['latitude'])\n    longitude=float(data['longitude'])\n    Timestamp=data['Timestamp']\n    stamp = convert_time_to_timestamp(Timestamp)\n    depth=float(data['depth'])\n    prediction = model_xgb.predict([[latitude, longitude,stamp,depth]])\n    # Convert the prediction to a regular float\n    prediction_value = float(prediction[0])",
-        "detail": "main",
+        "detail": "app.main",
         "documentation": {}
     },
     {
         "label": "app",
         "kind": 5,
-        "importPath": "main",
-        "description": "main",
+        "importPath": "app.main",
+        "description": "app.main",
         "peekOfCode": "app = FastAPI()\n# CORS setup\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"http://localhost:5173\"],  # Replace with the origin where your React app is running\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\n# Load the model from the file",
-        "detail": "main",
+        "detail": "app.main",
         "documentation": {}
     },
     {
         "label": "model_xgb_file_path",
         "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "model_xgb_file_path = 'C:/Users/dell/Downloads/xgb_model.pkl'\nmodel_xgb = joblib.load(model_xgb_file_path)\ndef convert_time_to_timestamp(real_time):\n        # Adjust format string to match 'YYYY-MM-DDTHH:MM:SS.sssZ' format\n        ts = datetime.datetime.strptime(real_time, '%Y-%m-%dT%H:%M:%S.%fZ')\n        # Use calendar.timegm to get the Unix timestamp\n        timestamp = calendar.timegm(ts.utctimetuple())\n        return float(timestamp)\nclass Item(BaseModel):\n    latitude : str # here if we remove the value is will be required field",
-        "detail": "main",
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "model_xgb_file_path = '/fastapi-app/xgb_model.pkl'\nmodel_xgb = joblib.load(model_xgb_file_path)\ndef convert_time_to_timestamp(real_time):\n        # Adjust format string to match 'YYYY-MM-DDTHH:MM:SS.sssZ' format\n        ts = datetime.datetime.strptime(real_time, '%Y-%m-%dT%H:%M:%S.%fZ')\n        # Use calendar.timegm to get the Unix timestamp\n        timestamp = calendar.timegm(ts.utctimetuple())\n        return float(timestamp)\nclass Item(BaseModel):\n    latitude : str # here if we remove the value is will be required field",
+        "detail": "app.main",
         "documentation": {}
     },
     {
         "label": "model_xgb",
         "kind": 5,
-        "importPath": "main",
-        "description": "main",
+        "importPath": "app.main",
+        "description": "app.main",
         "peekOfCode": "model_xgb = joblib.load(model_xgb_file_path)\ndef convert_time_to_timestamp(real_time):\n        # Adjust format string to match 'YYYY-MM-DDTHH:MM:SS.sssZ' format\n        ts = datetime.datetime.strptime(real_time, '%Y-%m-%dT%H:%M:%S.%fZ')\n        # Use calendar.timegm to get the Unix timestamp\n        timestamp = calendar.timegm(ts.utctimetuple())\n        return float(timestamp)\nclass Item(BaseModel):\n    latitude : str # here if we remove the value is will be required field\n    longitude : str ",
-        "detail": "main",
+        "detail": "app.main",
         "documentation": {}
     }
 ]
